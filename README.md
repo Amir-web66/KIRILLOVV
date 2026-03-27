@@ -16,36 +16,14 @@
 
 ## Overview
 
-KIRILLOV WRLD is the personal web portfolio of AMIR KHAMMAR.
+KIRILLOV  is the personal web portfolio of AMIR KHAMMAR.
 
 It combines:
 - Cybersecurity project showcase
 - Certificates and achievements timeline
 - Anime inspired visual identity
-- Firebase-backed admin entry workflow for future updates
+- Firebase-backed admin entry workflo
 
----
-
-## Animated Identity
-
-This repository powers an interactive portfolio with:
-- Video background atmosphere
-- Custom motion and reveal effects
-- Rinnegan inspired visual accents
-- Dynamic data cards for projects and certifications
-
----
-
-## Stack
-
-- HTML
-- CSS
-- Vanilla JavaScript
-- Firebase Firestore
-- Firebase Authentication
-- GitHub Pages
-
----
 
 ## Repository Structure
 
@@ -60,42 +38,7 @@ This repository powers an interactive portfolio with:
   - projects/
   - video/
 
----
 
-## Deploy
-
-### GitHub Pages
-
-1. Push this project to your ME repository.
-2. Open repository Settings, then Pages.
-3. Set source to Deploy from a branch.
-4. Select main and root folder.
-5. Save and wait for build.
-
-### Firebase Hosting
-
-1. Install Firebase CLI.
-2. Login with Firebase CLI.
-3. Select the target Firebase project.
-4. Run deploy command.
-
----
-
-## Content Updates
-
-You can update portfolio content in two ways:
-
-1. Admin mode from website
-- Login as admin
-- Use the + button
-- Save entries directly to Firestore
-
-2. Static repository update
-- Add project files to assets/projects
-- Add certificate files to assets/certs
-- Commit and push changes
-
----
 
 ## Security Model
 
@@ -110,4 +53,4 @@ You can update portfolio content in two ways:
 
 Designed and developed by AMIR KHAMMAR
 
-Project identity: KIRILLOV WRLD
+Project identity: KIRILLOV 
