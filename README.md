@@ -1,8 +1,53 @@
-# Amir Khammar Portfolio
+<h1 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=28&duration=3200&pause=900&color=E60000&center=true&vCenter=true&width=900&lines=AMIR+KHAMMAR;KIRILLOV+WRLD+%7C+Web+Portfolio;Cybersecurity+%7C+Cloud+%7C+AI;Systems+That+Think+Protect+Connect" alt="Typing Intro" />
+</h1>
 
-Dark blue and black portfolio site with a Rinnegan-inspired visual style.
+<p align="center">
+  <img src="https://img.shields.io/badge/Portfolio-KIRILLOV_WRLD-E60000?style=for-the-badge&logo=githubpages&logoColor=white" alt="Portfolio Badge" />
+  <img src="https://img.shields.io/badge/Author-AMIR-111111?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Author Badge" />
+  <img src="https://img.shields.io/badge/Status-Live-red?style=for-the-badge" alt="Status Badge" />
+</p>
 
-## Folder Architecture
+<p align="center">
+  <a href="https://amir-web66.github.io/ME/">Live Website</a>
+</p>
+
+---
+
+## Overview
+
+KIRILLOV WRLD is the personal web portfolio of AMIR KHAMMAR.
+
+It combines:
+- Cybersecurity project showcase
+- Certificates and achievements timeline
+- Anime inspired visual identity
+- Firebase-backed admin entry workflow for future updates
+
+---
+
+## Animated Identity
+
+This repository powers an interactive portfolio with:
+- Video background atmosphere
+- Custom motion and reveal effects
+- Rinnegan inspired visual accents
+- Dynamic data cards for projects and certifications
+
+---
+
+## Stack
+
+- HTML
+- CSS
+- Vanilla JavaScript
+- Firebase Firestore
+- Firebase Authentication
+- GitHub Pages
+
+---
+
+## Repository Structure
 
 - index.html
 - styles.css
@@ -13,101 +58,56 @@ Dark blue and black portfolio site with a Rinnegan-inspired visual style.
   - certs/
   - img/
   - projects/
+  - video/
 
-## Run Locally
+---
 
-You can open `index.html` directly, or use a local server.
+## Deploy
 
-## Deploy Option 1: GitHub Pages
+### GitHub Pages
 
-1. Push this folder to your GitHub repository root (or `docs/` folder).
-2. Go to repository settings > Pages.
-3. Select source branch (`main`) and folder (`/root` or `/docs`).
-4. Save and wait for GitHub Pages build.
+1. Push this project to your ME repository.
+2. Open repository Settings, then Pages.
+3. Set source to Deploy from a branch.
+4. Select main and root folder.
+5. Save and wait for build.
 
-## Deploy Option 2: Firebase Hosting
+### Firebase Hosting
 
-1. Install Firebase CLI:
-   - `npm install -g firebase-tools`
-2. Login:
-   - `firebase login`
-3. `.firebaserc` is already set to `kirillov-wrld-portfolio`.
-   - If your Firebase project id is different, update `.firebaserc`.
-4. Deploy:
-   - `firebase deploy`
+1. Install Firebase CLI.
+2. Login with Firebase CLI.
+3. Select the target Firebase project.
+4. Run deploy command.
 
-## How To Add A New Certificate
+---
 
-1. Add your certificate image to `assets/certs/` (PNG/JPG).
-2. Open `assets/certs/certificates.json`.
-3. Add a new object in the array:
+## Content Updates
 
-```json
-{
-  "title": "My New Certificate",
-  "description": "Optional short note",
-  "image": "assets/certs/my-certificate.png"
-}
-```
+You can update portfolio content in two ways:
 
-4. Save and redeploy (GitHub Pages or Firebase).
+1. Admin mode from website
+- Login as admin
+- Use the + button
+- Save entries directly to Firestore
 
-If you do not have an image yet, keep only `title` (and optional `description`).
+2. Static repository update
+- Add project files to assets/projects
+- Add certificate files to assets/certs
+- Commit and push changes
 
-## Add Button (+) In Website
+---
 
-The site now has a floating `+` button at bottom-right.
+## Security Model
 
-Use it to add:
-- `Type`: `Certification` or `Project`
-- `Title`
-- `Description`
-- `Stack/Tags` (for projects)
-- `Link URL` and `Link Label`
-- `Image URL` or local image file
+- Public read for visitors
+- Admin-only write in Firestore rules
+- Firebase Auth protected content management
+- Admin UID based access control
 
-Behavior:
-- Without Firebase config: saved only in your browser (localStorage).
-- With Firebase config: saved online to Firestore collection `portfolioEntries`.
+---
 
-## Firebase Setup For Add Button
+## Credits
 
-1. Create Firebase project (`kirillov-wrld-portfolio` or your own id).
-2. Enable Firestore Database in test mode.
-3. In `script.js`, fill `FIREBASE_CONFIG` with your real values:
+Designed and developed by AMIR KHAMMAR
 
-```js
-const FIREBASE_CONFIG = {
-   apiKey: "...",
-   authDomain: "...",
-   projectId: "...",
-   appId: "..."
-};
-```
-
-4. Deploy again.
-
-Firestore rules for testing:
-
-```txt
-rules_version = '2';
-service cloud.firestore {
-   match /databases/{database}/documents {
-      match /{document=**} {
-         allow read, write: if true;
-      }
-   }
-}
-```
-
-For production, restrict rules to authenticated users.
-
-## Important
-
-- `firebase.json` configures only hosting/deploy behavior.
-- This portfolio is static; certificate data is managed in `assets/certs/certificates.json`.
-
-## Notes
-
-- Add your real HackTheBox and HackViser profile links in `index.html`.
-- If your LinkedIn URL differs, update it in `index.html`.
+Project identity: KIRILLOV WRLD
