@@ -42,10 +42,10 @@ const certificationsFallback = [
 ];
 
 const FIREBASE_CONFIG = {
-  apiKey: "",
-  authDomain: "",
+  apiKey: "AIzaSyCBNUffLGqEShvKgypuSSZj6eQqzRU1wdI",
+  authDomain: "kirillov-wrld-portfolio.firebaseapp.com",
   projectId: "kirillov-wrld-portfolio",
-  appId: ""
+  appId: "1:77119971642:web:8870ba46b0ddb493897003"
 };
 
 const LOCAL_ENTRIES_KEY = "kirillov_custom_entries";
