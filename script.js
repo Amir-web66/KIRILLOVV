@@ -48,9 +48,14 @@ const FIREBASE_CONFIG = {
   appId: "1:77119971642:web:8870ba46b0ddb493897003"
 };
 
+const ADMIN_UID = "PkcNX4CpnVQqnXs9c3XwmmiW1nG3";
+
 const LOCAL_ENTRIES_KEY = "kirillov_custom_entries";
 let firestoreDb = null;
 let customEntries = [];
+let authInstance = null;
+let currentUser = null;
+let isAdminUser = false;
 
 function hasFirebaseConfig(config) {
   return Boolean(config.apiKey && config.authDomain && config.projectId && config.appId);
@@ -66,8 +71,10 @@ function initFirebase() {
       window.firebase.initializeApp(FIREBASE_CONFIG);
     }
     firestoreDb = window.firebase.firestore();
+    authInstance = window.firebase.auth();
   } catch (_) {
     firestoreDb = null;
+    authInstance = null;
   }
 }
 
@@ -102,22 +109,20 @@ async function readRemoteEntries() {
 }
 
 async function persistEntry(entry) {
-  if (firestoreDb) {
-    try {
-      await firestoreDb.collection("portfolioEntries").add(entry);
-      return "firebase";
-    } catch (_) {
-      const local = readLocalEntries();
-      local.push(entry);
-      saveLocalEntries(local);
-      return "local";
-    }
+  if (!isAdminUser) {
+    return "forbidden";
   }
 
-  const local = readLocalEntries();
-  local.push(entry);
-  saveLocalEntries(local);
-  return "local";
+  if (!firestoreDb) {
+    return "error";
+  }
+
+  try {
+    await firestoreDb.collection("portfolioEntries").add(entry);
+    return "firebase";
+  } catch (_) {
+    return "error";
+  }
 }
 
 function mergeCustomEntries(baseItems, type) {
@@ -382,6 +387,11 @@ function setupAddModal() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    if (!isAdminUser) {
+      window.alert("Admin login required to add entries.");
+      return;
+    }
+
     const type = document.getElementById("entry-type").value;
     const title = document.getElementById("entry-title").value.trim();
     const description = document.getElementById("entry-description").value.trim();
@@ -429,19 +439,86 @@ function setupAddModal() {
     form.reset();
     closeModal();
 
-    const message =
-      mode === "firebase"
-        ? "Entry saved to Firebase."
-        : "Entry saved in this browser only (configure Firebase to save online).";
+    const message = mode === "firebase"
+      ? "Entry saved to Firebase."
+      : mode === "forbidden"
+        ? "Only admin can add entries."
+        : "Could not save entry. Check Firebase Auth and Firestore rules.";
     window.alert(message);
+  });
+}
+
+function setupAdminAuth() {
+  const authBtn = document.getElementById("admin-auth-btn");
+  const addBtn = document.getElementById("open-add-modal");
+
+  if (!authBtn || !addBtn) {
+    return;
+  }
+
+  const updateAdminUi = () => {
+    if (isAdminUser) {
+      authBtn.textContent = "Admin Logout";
+      addBtn.style.display = "grid";
+      return;
+    }
+
+    authBtn.textContent = currentUser ? "Logout (Not Admin)" : "Admin Login";
+    addBtn.style.display = "none";
+  };
+
+  if (!authInstance) {
+    authBtn.style.display = "none";
+    addBtn.style.display = "none";
+    return;
+  }
+
+  authInstance.onAuthStateChanged((user) => {
+    currentUser = user;
+    isAdminUser = Boolean(user && user.uid && user.uid === ADMIN_UID);
+    updateAdminUi();
+  });
+
+  authBtn.addEventListener("click", async () => {
+    if (currentUser) {
+      try {
+        await authInstance.signOut();
+      } catch (_) {
+        window.alert("Logout failed. Please try again.");
+      }
+      return;
+    }
+
+    const email = window.prompt("Admin email:");
+    if (!email) {
+      return;
+    }
+
+    const password = window.prompt("Admin password:");
+    if (!password) {
+      return;
+    }
+
+    try {
+      const session = await authInstance.signInWithEmailAndPassword(email, password);
+      if (!session.user || session.user.uid !== ADMIN_UID) {
+        window.alert("Logged in, but this account is not the configured admin UID.");
+      }
+    } catch (_) {
+      window.alert("Login failed. Check email/password and authorized domain.");
+    }
   });
 }
 
 async function loadCustomEntries() {
   initFirebase();
-  const localEntries = readLocalEntries();
-  const remoteEntries = await readRemoteEntries();
-  customEntries = [...localEntries, ...remoteEntries];
+
+  if (!firestoreDb) {
+    customEntries = [];
+    return;
+  }
+
+  customEntries = await readRemoteEntries();
 }
 
 async function boot() {
@@ -452,6 +529,7 @@ async function boot() {
   setupMobileMenu();
   setupAboutTyping();
   setupResearchPanel();
+  setupAdminAuth();
   setupAddModal();
 }
 
