@@ -213,6 +213,24 @@ select {
   padding: 0.45rem 0.7rem;
 }
 
+.admin-auth-btn {
+  border: 1px solid var(--line);
+  background: rgba(230, 0, 0, 0.12);
+  color: #ffd3d3;
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-family: "Space Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-auth-btn:hover {
+  background: rgba(230, 0, 0, 0.28);
+  border-color: rgba(255, 120, 120, 0.7);
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -566,6 +584,7 @@ h2 {
   cursor: pointer;
   z-index: 40;
   box-shadow: 0 12px 24px rgba(127, 13, 13, 0.45);
+  display: none;
 }
 
 .add-floating-btn:hover {
@@ -693,6 +712,10 @@ h2 {
 
   .menu-toggle {
     display: inline-flex;
+  }
+
+  .admin-auth-btn {
+    order: 1;
   }
 
   .nav-links {
