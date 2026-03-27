@@ -29,6 +29,7 @@
   <header class="hero" id="home">
     <nav class="nav container">
       <a class="brand" href="#home">Amir Khammar</a>
+      <button id="admin-auth-btn" class="admin-auth-btn" type="button" aria-label="Admin authentication">Admin Login</button>
       <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">Menu</button>
       <ul id="nav-links" class="nav-links">
         <li><a href="#home">&gt;_whoami</a></li>
@@ -271,7 +272,7 @@
         </label>
 
         <p class="modal-help">
-          If Firebase is configured, entries are saved online. Otherwise entries are saved only in this browser.
+          Entries are saved to Firebase only. Admin login is required to add or edit portfolio content.
         </p>
 
         <button type="submit" class="btn primary">Save Entry</button>
@@ -281,6 +282,7 @@
 
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
