@@ -37,8 +37,8 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -3;
-  opacity: 0.12;
-  filter: hue-rotate(320deg) saturate(1.2) brightness(0.23);
+  opacity: 0.5  ;
+  filter: hue-rotate(320deg) saturate(1.2) brightness(0.7);
 }
 
 .video-dark-overlay {
