@@ -4,7 +4,7 @@ const projects = [
     description:
       "Integrated AI-based intrusion detection with firewall systems to monitor network and application-layer threats, with log analysis for performance evaluation.",
     stack: ["Cybersecurity", "AI", "Network Defense"],
-    link: "assets/projects/Projet_de_fin_d_ann%C3%A9e.pdf",
+    link: "",
     linkText: "Not completed yet "
   },
   {
