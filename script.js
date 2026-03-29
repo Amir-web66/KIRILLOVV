@@ -48,7 +48,7 @@ const FIREBASE_CONFIG = {
   appId: "1:77119971642:web:8870ba46b0ddb493897003"
 };
 
-const ADMIN_UID = "PkcNX4CpnVQqnXs9c3XwmmiW1nG3";
+const ADMIN_UID = "FXVCCEb8vhTAJ3Plonmhonf31Bl2";
 
 const LOCAL_ENTRIES_KEY = "kirillov_custom_entries";
 let firestoreDb = null;
