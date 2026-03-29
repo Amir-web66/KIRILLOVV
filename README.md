@@ -14,7 +14,7 @@
 
 ---
 
-## Overview :
+## Overview 
 
 KIRILLOV  is the personal web portfolio of AMIR KHAMMAR.
 
