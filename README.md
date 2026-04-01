@@ -16,13 +16,13 @@
 
 ## Overview 
 
-KIRILLOV  is the personal web portfolio of AMIR KHAMMAR.
+KIRILLOV  is my personal web portfolio.
 
 It combines:
-- Cybersecurity project showcase
+- HTB LABs and machines writeups, CTF writeups and project showcase
 - Certificates and achievements timeline
-- Anime inspired visual identity
-- Firebase-backed admin entry workflo
+- Firebase-backed admin entry workflow
+- more is coming soon ....
 
 
 ## Repository Structure
@@ -51,6 +51,6 @@ It combines:
 
 ## Credits
 
-Designed and developed by AMIR KHAMMAR
+Designed and developed by LBrinss
 
 Project identity: KIRILLOV 
